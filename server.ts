@@ -82,9 +82,9 @@ export function app(): express.Express {
           description:
             'Find like minded male or female unvaccinated organic humans!',
           image:
-            'https://tube.organic.dating/assets/Healing-Tube-Logo.jpg',
-          site: 'https://tube.organic.dating/',
-          url: 'https://tube.organic.dating' + params,
+            'https://video.fuck.theater/assets/img/cover.png',
+          site: 'https://video.fuck.theater/',
+          url: 'https://video.fuck.theater' + params,
           keywords: 'FuckTheaterVideo',
         };
         if (
@@ -128,7 +128,7 @@ export function app(): express.Express {
           const talent = {
             name: post?.title || post?.albumname || 'Healing.Tube Post',
             description: pdhtml?.textContent || 'Post content',
-            image: post?.thumbfilename || post?.metaimage || post?.imageUrl || 'https://tube.organic.dating/assets/Healing-Tube-Logo.jpg',
+            image: post?.thumbfilename || post?.metaimage || post?.imageUrl || 'https://video.fuck.theater/assets/img/cover.png',
           };
           seo.title = talent.name;
           seo.description = strip_html_tags(talent.description);

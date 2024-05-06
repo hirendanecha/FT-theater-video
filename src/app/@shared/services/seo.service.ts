@@ -69,7 +69,7 @@ export class SeoService {
     }
 
     if (!tagValue.image) {
-      tagValue.image = 'https://tube.organic.dating/assets/Healing-Tube-Logo.jpg';
+      tagValue.image = 'https://video.fuck.theater/assets/img/cover.png';
     }
 
     this.meta.updateTag({
