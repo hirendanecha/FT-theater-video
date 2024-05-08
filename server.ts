@@ -78,9 +78,9 @@ export function app(): express.Express {
         }
         const params = req.params[0];
         var seo: any = {
-          title: 'Fuck Theater Video',
+          title: 'Fuck.Theater Video',
           description:
-            'Find like minded male or female unvaccinated organic humans!',
+            'Live Girls! Talk One-on-One Face-to-Face!',
           image:
             'https://video.fuck.theater/assets/img/cover.png',
           site: 'https://video.fuck.theater/',

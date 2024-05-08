@@ -69,7 +69,7 @@ export class SeoService {
     }
 
     if (!tagValue.image) {
-      tagValue.image = 'https://video.fuck.theater/assets/img/cover.png';
+      tagValue.image = 'https://video.fuck.theater/assets/img/meta.png';
     }
 
     this.meta.updateTag({
