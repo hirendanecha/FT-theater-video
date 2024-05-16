@@ -35,6 +35,7 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
   @Input() message: string;
   @Input() data: any;
   @Input() communityId: any;
+  @Input() channelList: any = [];
   postData: any = {
     id: null,
     profileid: null,
@@ -197,9 +198,16 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
               if (event.body?.url) {
                 this.postData['file1'] = null;
                 this.postData['streamname'] = event.body.url;
-                if (!this.postData.id && this.thumbfilenameProgress === 100 && this.streamnameProgress === 100) {
+                if (
+                  !this.postData.id &&
+                  this.thumbfilenameProgress === 100 &&
+                  this.streamnameProgress === 100
+                ) {
                   this.createPost();
-                } else if (this.postData.id && this.streamnameProgress === 100) {
+                } else if (
+                  this.postData.id &&
+                  this.streamnameProgress === 100
+                ) {
                   this.createPost();
                 }
               }
@@ -223,9 +231,13 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
                 this.postData['file2'] = null;
                 this.postData['thumbfilename'] = event.body.url;
               }
-              if (this.postData?.id && this.thumbfilenameProgress === 100 && !this.streamnameProgress) {
+              if (
+                this.postData?.id &&
+                this.thumbfilenameProgress === 100 &&
+                !this.streamnameProgress
+              ) {
                 this.spinner.hide();
-                this.postData.streamname = this.selectedVideoFile
+                this.postData.streamname = this.selectedVideoFile;
                 this.createPost();
               }
             }
@@ -283,7 +295,7 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
             this.activeModal.close();
           } else {
             this.toastService.success('Post created successfully');
-            this.activeModal.close();
+            this.activeModal.close('success');
           }
         },
         error: (error) => {
@@ -334,9 +346,11 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
 
   onSelectedVideo(event: any) {
     // const maxSize = 2*10^9;
-    const maxSize = 2147483648; //2GB
+    // const maxSize = 2147483648; //2GB
+    const maxSize = 10737418240; //10GB
+
     if (event.target?.files?.[0].size < maxSize) {
-        this.fileSizeError = false
+        this.fileSizeError = false;
       if (event.target?.files?.[0].type.includes('video/mp4')) {
         this.postData.file1 = event.target?.files?.[0];
         this.selectedVideoFile = URL.createObjectURL(event.target.files[0]);
@@ -346,7 +360,7 @@ export class VideoPostModalComponent implements OnInit, AfterViewInit {
         this.toastService.warring('please upload only mp4 files');
       }
     }else{
-      this.toastService.warring('Maximum video size allowed is 2 GB.');
+      this.toastService.warring('Maximum video size allowed is 10 GB.');
       this.fileSizeError = true
     }
   }

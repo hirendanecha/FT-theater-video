@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private commonService: CommonService,
     private cookieService: CookieService
-  ) { }
+  ) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
